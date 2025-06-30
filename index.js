@@ -29,6 +29,15 @@ async function run() {
     await client.connect();
 
     const coffeeCollection = client.db("coffeDb").collection("coffee");
+    const usersCollection = client.db("coffeDb").collection("users");
+
+    //===>Post User Information<===//
+    app.post("/user", async (req, res) => {
+      const userInfo = req.body;
+      // console.log(userInfo);
+      const result = await usersCollection.insertOne(userInfo);
+      res.send(result);
+    });
 
     //===>Post Coffee<===//
     app.post("/coffee", async (req, res) => {
