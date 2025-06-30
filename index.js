@@ -39,6 +39,12 @@ async function run() {
       res.send(result);
     });
 
+    //===>Get Users Information<===//
+    app.get("/users", async (req, res) => {
+      const users = await usersCollection.find().toArray();
+      res.send(users);
+    });
+
     //===>Post Coffee<===//
     app.post("/coffee", async (req, res) => {
       const coffee = req.body;
