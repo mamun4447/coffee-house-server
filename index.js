@@ -109,6 +109,9 @@ async function run() {
 }
 run().catch(console.dir);
 
+app.get("/", (req, res) => {
+  res.send("Userver is connected!");
+});
 //==>Listen To the Port<===//
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
